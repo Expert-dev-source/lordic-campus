@@ -18,6 +18,12 @@ Development: `npm run dev`. Tests: `npm test` (needs `python3` on PATH for the c
 
 No database, accounts or environment variables are needed. The Python runtime is bundled in `public/pyodide`, so coding exercises work offline.
 
+## Offline use
+
+In production, the app registers a service worker on HTTPS (and on `localhost` for local testing). After the first online visit, it saves the app entry page, the offline fallback, the manifest and icons, and static app assets. It also saves snapshots of pages as you visit them, up to 40 pages, and caches Pyodide assets the first time they are requested. When offline, previously saved pages are served from cache; a page not saved yet shows `offline.html`. The app switches internal links to full-page navigations while the browser reports itself offline so the service worker can serve those saved snapshots.
+
+Progress remains in this browser's `localStorage`. Exam API requests and grading are intentionally not cached or queued, so starting or submitting an exam still requires a connection. Offline storage is best-effort and subject to browser storage limits; open the app online at least once before relying on it offline.
+
 ## What is in this release (Phase 1 to 5, plus the foundations of 7)
 
 One **complete learning journey: Computer Programming I (Introduction to Programming)**, plus the full programme outline.

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
 import Shell from "@/components/Shell";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 
 export const metadata: Metadata = {
   title: { default: "Lordic Campus", template: "%s · Lordic Campus" },
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StoreProvider>
           <Shell>{children}</Shell>
         </StoreProvider>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
